@@ -9,23 +9,23 @@ load_dotenv()
 
 # Configure Streamlit page settings
 st.set_page_config(
-    page_title="Chat with Gemini-Pro!",
+    page_title="Chat with Gemini-Flash!",
     page_icon=":robot_face:",  # Favicon emoji
     layout="wide",  # Page layout option
 )
 
 API_KEY = os.getenv("GOOGLE_API_KEY")
 
-# Set up Google Gemini-Pro AI model
+# Set up Google Gemini-Flash AI model
 gpt.configure(api_key=API_KEY)
-model = gpt.GenerativeModel('gemini-pro')
+model = gpt.GenerativeModel('gemini-2.5-flash')
 
 # Initialize chat session in Streamlit if not already present
 if "chat_session" not in st.session_state:
     st.session_state.chat_session = model.start_chat(history=[])
 
 # Display the chatbot's title on the page
-st.title("🤖 Chat with Gemini-Pro")
+st.title("🤖 Chat with Gemini-Flash")
 
 # Display the chat history
 for msg in st.session_state.chat_session.history:
@@ -33,7 +33,7 @@ for msg in st.session_state.chat_session.history:
         st.markdown(msg["content"])
 
 # Input field for user's message
-user_input = st.chat_input("Ask Gemini-Pro...")
+user_input = st.chat_input("Ask Gemini-Flash...")
 if user_input:
     # Add user's message to chat and display it
     st.chat_message("user").markdown(user_input)
